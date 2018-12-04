@@ -12,7 +12,7 @@ import TensorFlow
 let fileManager = FileManager.default
 
 let fileURLString = "/Users/kobejean/Developer/git/swift-iris/Iris/Iris/Data/iris_training.csv"
-guard var trainingData = try? String(contentsOfFile: "/Users/kobejean/Developer/git/swift-iris/Iris/Iris/Data/iris_training.csv") else {
+guard var trainingData = try? String(contentsOfFile: fileURLString) else {
     fatalError()
 }
 let trainingDataArray = trainingData.split(separator: "\n")
@@ -31,16 +31,6 @@ let inputSize = Int32(4)
 let layer1Size = Int32(5)
 let layer2Size = Int32(5)
 let outputSize = Int32(3)
-
-//public struct IrisModel : ParameterGroup {
-//    struct Layer : ParameterGroup {
-//        let w: Tensor<Float>
-//        let b: Tensor<Float>
-//    }
-//    public var layer1 =        DenseLayer<Float>(inputSize: inputSize,  outputSize: layer1Size, activation: relu)
-//    public var layer2 =        DenseLayer<Float>(inputSize: layer1Size, outputSize: layer2Size, activation: relu)
-//    public var outputLayer =   DenseLayer<Float>(inputSize: layer2Size, outputSize: outputSize, activation: softmax)
-//}
 
 public struct Layer : ParameterGroup {
     public var w: Tensor<Float>
@@ -80,6 +70,4 @@ func loss(_ x: Tensor<Float>, using model: IrisModel, labels: Tensor<Int32>) -> 
 }
 
 let total_loss = loss(features, using: model, labels: labels)
-//print(#valueAndGradient(relu(_:))(features))
-//print(#valueAndGradient(loss(_:using:labels:))(features, model, labels))
 print("Loss:", total_loss)
