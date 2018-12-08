@@ -1,5 +1,5 @@
 # swift-iris
-Train on the Iris dataset with swift.
+Training a ML model on the Iris dataset with Swift for TensorFlow.
 
 
 ## Requirements
