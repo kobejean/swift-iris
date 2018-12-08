@@ -13,6 +13,7 @@
 		3D0AE65E21B396BE005E3750 /* TensorInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */; };
 		3D39DF5621B3FF4100B83A3B /* Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D39DF5521B3FF4100B83A3B /* Ops.swift */; };
 		3D8DD36921BBB06B00255FBC /* MathSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8DD36821BBB06B00255FBC /* MathSymbols.swift */; };
+		3D8DD36A21BBB9CF00255FBC /* iris_training.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D289CB721B3BA9000346956 /* iris_training.csv */; };
 		3DF0340921BB51CD00373872 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340821BB51CD00373872 /* model.swift */; };
 		3DF0340B21BB522200373872 /* IrisDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340A21BB522200373872 /* IrisDataset.swift */; };
 /* End PBXBuildFile section */
@@ -20,12 +21,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		3D0AE64321B3914A005E3750 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = usr/share/Iris/Data;
+			dstSubfolderSpec = 7;
 			files = (
+				3D8DD36A21BBB9CF00255FBC /* iris_training.csv in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -35,7 +37,6 @@
 		3D0AE65021B39411005E3750 /* libtensorflow_framework.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.so; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libtensorflow_framework.so"; sourceTree = "<group>"; };
 		3D0AE65121B39411005E3750 /* libtensorflow.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.so; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libtensorflow.so"; sourceTree = "<group>"; };
 		3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorInitializers.swift; sourceTree = "<group>"; };
-		3D0AE65F21B3A58A005E3750 /* libswiftTensorFlow.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswiftTensorFlow.dylib; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libswiftTensorFlow.dylib"; sourceTree = "<group>"; };
 		3D289CB721B3BA9000346956 /* iris_training.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = iris_training.csv; sourceTree = "<group>"; };
 		3D39DF5521B3FF4100B83A3B /* Ops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ops.swift; sourceTree = "<group>"; };
 		3D8DD36821BBB06B00255FBC /* MathSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSymbols.swift; sourceTree = "<group>"; };
@@ -81,13 +82,12 @@
 				3D289CB521B3BA2A00346956 /* Data */,
 				3D0AE65C21B396A0005E3750 /* Utilities */,
 			);
-			path = Iris;
+			name = Iris;
 			sourceTree = "<group>";
 		};
 		3D0AE64F21B39410005E3750 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3D0AE65F21B3A58A005E3750 /* libswiftTensorFlow.dylib */,
 				3D0AE65021B39411005E3750 /* libtensorflow_framework.so */,
 				3D0AE65121B39411005E3750 /* libtensorflow.so */,
 			);

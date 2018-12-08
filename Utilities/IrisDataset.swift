@@ -9,9 +9,10 @@
 import Foundation
 import TensorFlow
 
-func readIrisDataset() -> ([Float], [Int32], Int32) {let fileURLString = "/Users/kobejean/Developer/git/swift-iris/Iris/Iris/Data/iris_training.csv"
+func readIrisDataset() -> ([Float], [Int32], Int32) {
+    let fileURLString = "usr/share/Iris/Data/iris_training.csv"
     guard let trainingData = try? String(contentsOfFile: fileURLString) else {
-        fatalError()
+        fatalError("Could not read file at \(fileURLString)")
     }
     let trainingDataArray = trainingData.split(separator: "\n")
         .map { $0.split(separator: ",").map { String($0) } }
