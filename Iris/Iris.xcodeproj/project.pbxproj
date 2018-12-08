@@ -10,11 +10,11 @@
 		3D0AE64921B3914A005E3750 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE64821B3914A005E3750 /* main.swift */; };
 		3D0AE65221B39411005E3750 /* libtensorflow_framework.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0AE65021B39411005E3750 /* libtensorflow_framework.so */; };
 		3D0AE65421B39532005E3750 /* libtensorflow.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0AE65121B39411005E3750 /* libtensorflow.so */; };
-		3D0AE65A21B39603005E3750 /* DenseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE65921B39603005E3750 /* DenseLayer.swift */; };
 		3D0AE65E21B396BE005E3750 /* TensorInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */; };
-		3D289CB421B3AC6F00346956 /* DenseLayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D289CB321B3AC6F00346956 /* DenseLayerModel.swift */; };
 		3D39DF5621B3FF4100B83A3B /* Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D39DF5521B3FF4100B83A3B /* Ops.swift */; };
-		3DED17E221B4BB84006D182B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED17E121B4BB84006D182B /* Model.swift */; };
+		3D8DD36921BBB06B00255FBC /* MathSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8DD36821BBB06B00255FBC /* MathSymbols.swift */; };
+		3DF0340921BB51CD00373872 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340821BB51CD00373872 /* model.swift */; };
+		3DF0340B21BB522200373872 /* IrisDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340A21BB522200373872 /* IrisDataset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,13 +34,13 @@
 		3D0AE64821B3914A005E3750 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3D0AE65021B39411005E3750 /* libtensorflow_framework.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.so; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libtensorflow_framework.so"; sourceTree = "<group>"; };
 		3D0AE65121B39411005E3750 /* libtensorflow.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.so; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libtensorflow.so"; sourceTree = "<group>"; };
-		3D0AE65921B39603005E3750 /* DenseLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenseLayer.swift; sourceTree = "<group>"; };
 		3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorInitializers.swift; sourceTree = "<group>"; };
 		3D0AE65F21B3A58A005E3750 /* libswiftTensorFlow.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswiftTensorFlow.dylib; path = "../../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-11-21-a.xctoolchain/usr/lib/swift/macosx/libswiftTensorFlow.dylib"; sourceTree = "<group>"; };
-		3D289CB321B3AC6F00346956 /* DenseLayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenseLayerModel.swift; sourceTree = "<group>"; };
 		3D289CB721B3BA9000346956 /* iris_training.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = iris_training.csv; sourceTree = "<group>"; };
 		3D39DF5521B3FF4100B83A3B /* Ops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ops.swift; sourceTree = "<group>"; };
-		3DED17E121B4BB84006D182B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		3D8DD36821BBB06B00255FBC /* MathSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSymbols.swift; sourceTree = "<group>"; };
+		3DF0340821BB51CD00373872 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		3DF0340A21BB522200373872 /* IrisDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisDataset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				3D0AE64821B3914A005E3750 /* main.swift */,
+				3DF0340821BB51CD00373872 /* model.swift */,
 				3D289CB521B3BA2A00346956 /* Data */,
 				3D0AE65C21B396A0005E3750 /* Utilities */,
-				3D0AE65B21B3960A005E3750 /* Structs */,
 			);
 			path = Iris;
 			sourceTree = "<group>";
@@ -94,21 +94,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D0AE65B21B3960A005E3750 /* Structs */ = {
-			isa = PBXGroup;
-			children = (
-				3D0AE65921B39603005E3750 /* DenseLayer.swift */,
-				3D289CB321B3AC6F00346956 /* DenseLayerModel.swift */,
-			);
-			path = Structs;
-			sourceTree = "<group>";
-		};
 		3D0AE65C21B396A0005E3750 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3D8DD36821BBB06B00255FBC /* MathSymbols.swift */,
 				3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */,
 				3D39DF5521B3FF4100B83A3B /* Ops.swift */,
-				3DED17E121B4BB84006D182B /* Model.swift */,
+				3DF0340A21BB522200373872 /* IrisDataset.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -178,12 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF0340921BB51CD00373872 /* model.swift in Sources */,
+				3D8DD36921BBB06B00255FBC /* MathSymbols.swift in Sources */,
+				3DF0340B21BB522200373872 /* IrisDataset.swift in Sources */,
 				3D0AE64921B3914A005E3750 /* main.swift in Sources */,
-				3D289CB421B3AC6F00346956 /* DenseLayerModel.swift in Sources */,
 				3D0AE65E21B396BE005E3750 /* TensorInitializers.swift in Sources */,
-				3DED17E221B4BB84006D182B /* Model.swift in Sources */,
 				3D39DF5621B3FF4100B83A3B /* Ops.swift in Sources */,
-				3D0AE65A21B39603005E3750 /* DenseLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

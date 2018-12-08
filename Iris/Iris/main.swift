@@ -6,68 +6,62 @@
 //  Copyright © 2018 Jean Flaherty. All rights reserved.
 //
 
-import Foundation
 import TensorFlow
 
-let fileManager = FileManager.default
+public let (featureArray, labelArray, batchSize) = readIrisDataset()
 
-let fileURLString = "/Users/kobejean/Developer/git/swift-iris/Iris/Iris/Data/iris_training.csv"
-guard var trainingData = try? String(contentsOfFile: fileURLString) else {
-    fatalError()
-}
-let trainingDataArray = trainingData.split(separator: "\n")
-                                    .map { $0.split(separator: ",").map { String($0) } }
-                                    .dropFirst()
-let (featureArray, labelArray) = trainingDataArray.reduce(into: ([Float](), [Int32]())) { (result, row) in
-    result.0 += row[0..<4].map { Float($0)! }
-    result.1.append(Int32(row[4])!)
-}
-let rowCount = Int32(trainingDataArray.count)
-let features = Tensor<Float>(shape: [rowCount, 4], scalars: featureArray)
-let labels = Tensor<Int32>(shape: [rowCount], scalars: labelArray)
+// Hyperparameters
+public let inputSize = Int32(4)
+public let layer1Size = Int32(10)
+public let layer2Size = Int32(10)
+public let outputSize = Int32(3)
+let x = Tensor<Float>(shape: [batchSize, 4], scalars: featureArray)
+let y_i = Tensor<Int32>(shape: [batchSize], scalars: labelArray)
+var θ = IrisModel()
+let η: Float = 0.001
 
-let batchSize = Int32(rowCount)
-let inputSize = Int32(4)
-let layer1Size = Int32(5)
-let layer2Size = Int32(5)
-let outputSize = Int32(3)
-
-public struct Layer : ParameterGroup {
-    public var w: Tensor<Float>
-    public var b: Tensor<Float>
+@inlinable @inline(__always)
+func lossAndGradient(_ x: Tensor<Float>, _ y_i: Tensor<Int32>, _ θ: IrisModel) -> (Float, IrisModel) {
+    // Forward pass
+    let z1 = x • θ.w1 + θ.b1
+    let h1 = relu(z1)
+    let z2 = h1 • θ.w2 + θ.b2
+    let h2 = relu(z2)
+    let z3 = h2 • θ.w3 + θ.b3
+    let h3 = softmax(z3)
     
-    @inlinable @inline(__always)
-    public init(inputSize: Int32,  outputSize: Int32) {
-        w = Tensor<Float>(glorotUniform: [inputSize, outputSize])
-        b = Tensor<Float>(zeros: [outputSize])
+    // Evaluation
+    let p = e_i(y_i, outputSize)
+    let q = h3
+    let H = -Σ(p * log(q))
+    let H_total = μ(H)
+    
+    // Backward pass
+    let dz3 = (q - p) / Float(batchSize)      // [B, l3]
+    let dw3 = h2⊺ • dz3                       // [l2, l3]
+    let db3 = Σ(dz3, 0)                       // [l3]
+
+    let dz2 = dz3 • θ.w3⊺ * ajointRelu(z2)    // [B, l2]
+    let dw2 = h1⊺ • dz2                       // [l1, l2]
+    let db2 = Σ(dz2, 0)                       // [l2]
+
+    let dz1 = dz2 • θ.w2⊺ * ajointRelu(z1)    // [B, l1]
+    let dw1 = x⊺ • dz1                        // [x, l1]
+    let db1 = Σ(dz1, 0)                       // [l1]
+
+    let dθ = IrisModel(w1: dw1, w2: dw2, w3: dw3, b1: db1, b2: db2, b3: db3)
+    return (H_total, dθ)
+}
+
+while true {
+    for i in 0..<100 {
+        let (H_total, dθ) = lossAndGradient(x,y_i,θ)
+        θ.update(withGradients: dθ) { θ_n, dθ_n in
+            θ_n -= η * dθ_n
+        }
+        if i == 0 {
+            // Print Loss and Likelihood
+            print(String(format: "Training Loss: %.5f Likelihood: %.5f", H_total, exp(-H_total)))
+        }
     }
 }
-
-public struct IrisModel : ParameterGroup {
-    public var layer1 =        Layer(inputSize: inputSize,  outputSize: layer1Size)
-    public var layer2 =        Layer(inputSize: layer1Size, outputSize: layer2Size)
-    public var outputLayer =   Layer(inputSize: layer2Size, outputSize: outputSize)
-}
-
-
-@inlinable @inline(__always)
-public func inference(_ x: Tensor<Float>, model: IrisModel) -> Tensor<Float> {
-    let h1 = relu(x • model.layer1.w + model.layer1.b)
-    let h2 = relu(h1 • model.layer2.w + model.layer2.b)
-    let output = softmax(h2 • model.outputLayer.w + model.outputLayer.b)
-    return output
-}
-
-let model = IrisModel()
-
-@inlinable @inline(__always)
-func loss(_ x: Tensor<Float>, using model: IrisModel, labels: Tensor<Int32>) -> Float {
-    let logits = inference(x, model: model)
-    let oneHotLabels: Tensor<Float> = oneHot(indices: labels, depth: 3, onValue: -1, offValue: 0)
-    let trueLogProb = oneHotLabels • log(logits).transposed()
-    let total_loss = trueLogProb.sum(squeezingAxes: 1).mean()
-    return total_loss
-}
-
-let total_loss = loss(features, using: model, labels: labels)
-print("Loss:", total_loss)
