@@ -40,15 +40,12 @@ func lossAndGradient(_ x: Tensor<Float>, _ y_i: Tensor<Int32>, _ θ: IrisModel) 
     let dz3 = (q - p) / Float(batchSize)      // [B, l3]
     let dw3 = h2⊺ • dz3                       // [l2, l3]
     let db3 = Σ(dz3, 0)                       // [l3]
-
     let dz2 = dz3 • θ.w3⊺ * ajointRelu(z2)    // [B, l2]
     let dw2 = h1⊺ • dz2                       // [l1, l2]
     let db2 = Σ(dz2, 0)                       // [l2]
-
     let dz1 = dz2 • θ.w2⊺ * ajointRelu(z1)    // [B, l1]
     let dw1 = x⊺ • dz1                        // [x, l1]
-    let db1 = Σ(dz1, 0)                       // [l1]
-
+    let db1 = Σ(dz1, 0)
     let dθ = IrisModel(w1: dw1, w2: dw2, w3: dw3, b1: db1, b2: db2, b3: db3)
     return (H_total, dθ)
 }
