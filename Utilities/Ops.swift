@@ -20,14 +20,6 @@ public func oneHot<Scalar: TensorFlowScalar>(indices: Tensor<Int32>, depth: Int3
 }
 
 @inlinable @inline(__always)
-public func softmax<Scalar : BinaryFloatingPoint>(_ x: Tensor<Scalar>) -> Tensor<Scalar> {
-    let expx = exp(x)
-    let sum = expx.sum(alongAxes: -1)
-    return expx / sum
-}
-
-@inlinable @inline(__always)
 public func ajointRelu<Scalar: BinaryFloatingPoint>(_ x: Tensor<Scalar>) -> Tensor<Scalar> {
     return Tensor<Scalar>(x.elementsGreater(0))
 }
-

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3D0AE64921B3914A005E3750 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE64821B3914A005E3750 /* main.swift */; };
-		3D0AE65221B39411005E3750 /* libtensorflow_framework.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0AE65021B39411005E3750 /* libtensorflow_framework.so */; };
-		3D0AE65421B39532005E3750 /* libtensorflow.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0AE65121B39411005E3750 /* libtensorflow.so */; };
 		3D0AE65E21B396BE005E3750 /* TensorInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AE65D21B396BE005E3750 /* TensorInitializers.swift */; };
 		3D39DF5621B3FF4100B83A3B /* Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D39DF5521B3FF4100B83A3B /* Ops.swift */; };
 		3D8DD36921BBB06B00255FBC /* MathSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8DD36821BBB06B00255FBC /* MathSymbols.swift */; };
 		3D8DD36A21BBB9CF00255FBC /* iris_training.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D289CB721B3BA9000346956 /* iris_training.csv */; };
+		3DCDA90121BC868B0048EAA3 /* libtensorflow_framework.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCDA8FF21BC868B0048EAA3 /* libtensorflow_framework.so */; };
+		3DCDA90221BC868B0048EAA3 /* libtensorflow.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCDA90021BC868B0048EAA3 /* libtensorflow.so */; };
 		3DF0340921BB51CD00373872 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340821BB51CD00373872 /* model.swift */; };
 		3DF0340B21BB522200373872 /* IrisDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0340A21BB522200373872 /* IrisDataset.swift */; };
 /* End PBXBuildFile section */
@@ -22,7 +22,7 @@
 		3D0AE64321B3914A005E3750 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = usr/share/Iris/Data;
+			dstPath = usr/share/man/man1/Iris/Data;
 			dstSubfolderSpec = 7;
 			files = (
 				3D8DD36A21BBB9CF00255FBC /* iris_training.csv in CopyFiles */,
@@ -40,6 +40,8 @@
 		3D289CB721B3BA9000346956 /* iris_training.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = iris_training.csv; sourceTree = "<group>"; };
 		3D39DF5521B3FF4100B83A3B /* Ops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ops.swift; sourceTree = "<group>"; };
 		3D8DD36821BBB06B00255FBC /* MathSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSymbols.swift; sourceTree = "<group>"; };
+		3DCDA8FF21BC868B0048EAA3 /* libtensorflow_framework.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.so; path = "../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-12-04-a.xctoolchain/usr/lib/swift/macosx/libtensorflow_framework.so"; sourceTree = "<group>"; };
+		3DCDA90021BC868B0048EAA3 /* libtensorflow.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.so; path = "../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-12-04-a.xctoolchain/usr/lib/swift/macosx/libtensorflow.so"; sourceTree = "<group>"; };
 		3DF0340821BB51CD00373872 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		3DF0340A21BB522200373872 /* IrisDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisDataset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D0AE65421B39532005E3750 /* libtensorflow.so in Frameworks */,
-				3D0AE65221B39411005E3750 /* libtensorflow_framework.so in Frameworks */,
+				3DCDA90121BC868B0048EAA3 /* libtensorflow_framework.so in Frameworks */,
+				3DCDA90221BC868B0048EAA3 /* libtensorflow.so in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +90,8 @@
 		3D0AE64F21B39410005E3750 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DCDA8FF21BC868B0048EAA3 /* libtensorflow_framework.so */,
+				3DCDA90021BC868B0048EAA3 /* libtensorflow.so */,
 				3D0AE65021B39411005E3750 /* libtensorflow_framework.so */,
 				3D0AE65121B39411005E3750 /* libtensorflow.so */,
 			);
